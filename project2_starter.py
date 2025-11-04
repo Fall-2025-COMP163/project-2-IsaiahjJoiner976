@@ -80,6 +80,10 @@ class Character:
         # TODO: Implement basic attack
         # Damage should be based on self.strength
         # Use target.take_damage(damage) to apply damage
+        attack = self.strength * 2
+        damage = target.take_damage(attack)
+        print(f"{target} took {damage} damage!")
+        pass
         
     def take_damage(self, damage):
         """
@@ -89,6 +93,16 @@ class Character:
         # TODO: Implement taking damage
         # Reduce self.health by damage amount
         # Make sure health doesn't go below 0
+        if damage < self.hp:
+            self.hp -= damage
+            print(f"You took {damage} damage! Health has dropped to {self.hp}.")
+            return damage
+        elif damage >= self.hp:
+            damage_taken = self.hp
+            self.hp = 0
+            print(f"You have died!")
+            return damage_taken
+        pass
         
     def display_stats(self):
         """
@@ -96,6 +110,11 @@ class Character:
         """
         # TODO: Print character's name, health, strength, and magic
         # Make it look nice with formatting
+        print("== Base Stats ==")
+        print(f"Character Name: {self.char_name}")
+        print(f"Health: {self.hp}")
+        print(f"Strength: {self.str}")
+        print(f"Magic: {self.mag}")
         pass
 
 class Player(Character):
