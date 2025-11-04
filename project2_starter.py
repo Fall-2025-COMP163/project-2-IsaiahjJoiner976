@@ -1,7 +1,7 @@
 """
 COMP 163 - Project 2: Character Abilities Showcase
-Name: [Your Name Here]
-Date: [Date]
+Name: Isaiah Joiner
+Date: 11/4/2025
 
 AI Usage: [Document any AI assistance used]
 Example: AI helped with inheritance structure and method overriding concepts
@@ -63,6 +63,10 @@ class Character:
         """Initialize basic character attributes"""
         # TODO: Set the character's name, health, strength, and magic
         # These should be stored as instance variables
+        self.char_name = name
+        self.hp = health
+        self.str = strength
+        self.mag = magic
         pass
         
     def attack(self, target):
@@ -76,7 +80,6 @@ class Character:
         # TODO: Implement basic attack
         # Damage should be based on self.strength
         # Use target.take_damage(damage) to apply damage
-        pass
         
     def take_damage(self, damage):
         """
@@ -86,7 +89,6 @@ class Character:
         # TODO: Implement taking damage
         # Reduce self.health by damage amount
         # Make sure health doesn't go below 0
-        pass
         
     def display_stats(self):
         """
