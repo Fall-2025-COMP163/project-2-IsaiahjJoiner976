@@ -63,7 +63,7 @@ class Character:
         """Initialize basic character attributes"""
         # TODO: Set the character's name, health, strength, and magic
         # These should be stored as instance variables
-        self.char_name = name
+        self.name = name
         self.hp = health
         self.str = strength
         self.mag = magic
@@ -111,7 +111,7 @@ class Character:
         # TODO: Print character's name, health, strength, and magic
         # Make it look nice with formatting
         print("== Base Stats ==")
-        print(f"Character Name: {self.char_name}")
+        print(f"Character Name: {self.name}")
         print(f"Health: {self.hp}")
         print(f"Strength: {self.str}")
         print(f"Magic: {self.mag}")
