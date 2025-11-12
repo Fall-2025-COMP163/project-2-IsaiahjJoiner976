@@ -163,11 +163,11 @@ class Warrior(Player):
         """
         # TODO: Call super().__init__() with warrior-appropriate stats
         # Suggested stats: health=120, strength=15, magic=5
-        Warrior = "Warrior"
+        Warrior_class = "Warrior"
         base_health = 120
         base_strength = 15
         base_magic = 5
-        super().__init__(name, Warrior, base_health, base_strength, base_magic)
+        super().__init__(name, Warrior_class, base_health, base_strength, base_magic)
         pass
         
     def attack(self, target):
@@ -251,11 +251,11 @@ class Rogue(Player):
         """
         # TODO: Call super().__init__() with rogue-appropriate stats
         # Suggested stats: health=90, strength=12, magic=10
-        rogue_class = "Rogue"
+        character_class = "Rogue"
         base_health = 90
         base_strength = 12
         base_magic = 10
-        super().__init__(name, rogue_class, base_health, base_strength, base_magic)
+        super().__init__(name, character_class, base_health, base_strength, base_magic)
         pass
         
     def attack(self, target):
