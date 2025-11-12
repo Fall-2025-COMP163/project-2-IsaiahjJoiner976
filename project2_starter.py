@@ -10,6 +10,7 @@ Example: AI helped with inheritance structure and method overriding concepts
 # ============================================================================
 # PROVIDED BATTLE SYSTEM (DO NOT MODIFY)
 # ============================================================================
+import random
 
 class SimpleBattle:
     """
@@ -80,9 +81,9 @@ class Character:
         # TODO: Implement basic attack
         # Damage should be based on self.strength
         # Use target.take_damage(damage) to apply damage
-        attack = self.strength * 2
+        attack = self.str * 2
         damage = target.take_damage(attack)
-        print(f"{target} took {damage} damage!")
+        print(f"{target.name} took {damage} damage!")
         pass
         
     def take_damage(self, damage):
@@ -95,7 +96,7 @@ class Character:
         # Make sure health doesn't go below 0
         if damage < self.hp:
             self.hp -= damage
-            print(f"You took {damage} damage! Health has dropped to {self.hp}.")
+            print(f"{self.name} took {damage} damage! Health has dropped to {self.hp}.")
             return damage
         elif damage >= self.hp:
             damage_taken = self.hp
@@ -110,8 +111,7 @@ class Character:
         """
         # TODO: Print character's name, health, strength, and magic
         # Make it look nice with formatting
-        print("== Base Stats ==")
-        print(f"Character Name: {self.name}")
+        print(f"== {self.name} Stats ==")
         print(f"Health: {self.hp}")
         print(f"Strength: {self.str}")
         print(f"Magic: {self.mag}")
@@ -131,6 +131,10 @@ class Player(Character):
         # TODO: Call super().__init__() with the basic character info
         # TODO: Store the character_class (like "Warrior", "Mage", etc.)
         # TODO: Add any other player-specific attributes (level, experience, etc.)
+        super().__init___(name, health, strength, magic)
+        self.char_class = character_class
+        self.lvl = 1
+        self.xp = 0
         pass
         
     def display_stats(self):
@@ -140,6 +144,10 @@ class Player(Character):
         """
         # TODO: Call the parent's display_stats method using super()
         # TODO: Then print additional player info like class and level
+        super().display_stats()
+        print(f"Character Class: {self.char_class}")
+        print(f"Level: {self.lvl}")
+        print(f"Experience: {self.xp}")
         pass
 
 class Warrior(Player):
@@ -155,6 +163,11 @@ class Warrior(Player):
         """
         # TODO: Call super().__init__() with warrior-appropriate stats
         # Suggested stats: health=120, strength=15, magic=5
+        warrior_class = "Warrior"
+        base_health = 120
+        base_strength = 15
+        base_magic = 5
+        super().__init__(name, warrior_class, base_health, base_strength, base_magic)
         pass
         
     def attack(self, target):
@@ -165,6 +178,9 @@ class Warrior(Player):
         # TODO: Implement warrior attack
         # Should do more damage than basic attack
         # Maybe strength + 5 bonus damage?
+        attack = self.str * 2 + 5
+        damage = target.take_damage(attack)
+        print(f"{target.name} took {damage} damage!")
         pass
         
     def power_strike(self, target):
@@ -173,6 +189,9 @@ class Warrior(Player):
         """
         # TODO: Implement power strike
         # Should do significantly more damage than regular attack
+        attack = self.str * 4
+        damage = target.take_damage(attack)
+        print(f"{target.name} took {damage} damage!")
         pass
 
 class Mage(Player):
@@ -188,6 +207,11 @@ class Mage(Player):
         """
         # TODO: Call super().__init__() with mage-appropriate stats
         # Suggested stats: health=80, strength=8, magic=20
+        mage_class = "Mage"
+        base_health = 80
+        base_strength = 8
+        base_magic = 20
+        super().__init__(name, mage_class, base_health, base_strength, base_magic)
         pass
         
     def attack(self, target):
@@ -197,6 +221,9 @@ class Mage(Player):
         """
         # TODO: Implement mage attack
         # Should use self.magic for damage calculation instead of strength
+        attack = self.mag * 2
+        damage = target.take_damage(attack)
+        print(f"{target.name} took {damage} damage!")
         pass
         
     def fireball(self, target):
@@ -205,6 +232,10 @@ class Mage(Player):
         """
         # TODO: Implement fireball spell
         # Should do magic-based damage with bonus
+        attack = self.mag * 4 + 5
+        damage = target.take_damage(attack)
+        print(f"{target.name} took {damage} damage!")
+        
         pass
 
 class Rogue(Player):
@@ -220,6 +251,11 @@ class Rogue(Player):
         """
         # TODO: Call super().__init__() with rogue-appropriate stats
         # Suggested stats: health=90, strength=12, magic=10
+        rogue_class = "Rogue"
+        base_health = 90
+        base_strength = 12
+        base_magic = 10
+        super().__init__(name, rogue_class, base_health, base_strength, base_magic)
         pass
         
     def attack(self, target):
@@ -230,6 +266,15 @@ class Rogue(Player):
         # TODO: Implement rogue attack
         # Could add a chance for critical hit (double damage)
         # Hint: use random.randint(1, 10) and if result <= 3, it's a crit
+        roll_result = random.randint(1, 10)
+        attack = self.str * 2
+        critical = attack + attack
+        if roll_result == 2 or roll_result == 8:
+            damage = target.take_damage(critical)
+            print(f"CRITICAL HIT! {self.name} stabs {target.name} for {damage} damage!")
+        else:
+            damage = target.take_damage(attack)
+            print(f"{target.name} took {damage} damage!")
         pass
         
     def sneak_attack(self, target):
@@ -238,6 +283,10 @@ class Rogue(Player):
         """
         # TODO: Implement sneak attack
         # Should always do critical damage
+        attack = self.str * 2
+        critical = attack + attack
+        damage = target.take_damage(critical)
+        print(f"{target.name} took {damage} damage!")
         pass
 
 class Weapon:
