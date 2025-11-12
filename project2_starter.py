@@ -232,7 +232,7 @@ class Mage(Player):
         """
         # TODO: Implement fireball spell
         # Should do magic-based damage with bonus
-        attack = self.magic * 4 + 5
+        attack = self.magic * 2 + (self.magic // 5)
         damage = target.take_damage(attack)
         print(f"{target.name} took {damage} damage!")
         
