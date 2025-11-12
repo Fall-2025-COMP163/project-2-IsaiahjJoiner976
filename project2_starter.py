@@ -189,7 +189,7 @@ class Warrior(Player):
         """
         # TODO: Implement power strike
         # Should do significantly more damage than regular attack
-        attack = self.strength * 4
+        attack = self.strength * 3
         damage = target.take_damage(attack)
         print(f"{target.name} took {damage} damage!")
         pass
