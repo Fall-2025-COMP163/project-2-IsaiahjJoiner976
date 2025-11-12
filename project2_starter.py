@@ -163,11 +163,11 @@ class Warrior(Player):
         """
         # TODO: Call super().__init__() with warrior-appropriate stats
         # Suggested stats: health=120, strength=15, magic=5
-        warrior_class = "Warrior"
+        warrior = "Warrior"
         base_health = 120
         base_strength = 15
         base_magic = 5
-        super().__init__(name, warrior_class, base_health, base_strength, base_magic)
+        super().__init__(name, warrior, base_health, base_strength, base_magic)
         pass
         
     def attack(self, target):
