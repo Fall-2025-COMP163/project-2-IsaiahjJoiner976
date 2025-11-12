@@ -131,7 +131,7 @@ class Player(Character):
         # TODO: Call super().__init__() with the basic character info
         # TODO: Store the character_class (like "Warrior", "Mage", etc.)
         # TODO: Add any other player-specific attributes (level, experience, etc.)
-        super().__init___(name, health, strength, magic)
+        super().__init__(name, health, strength, magic)
         self.char_class = character_class
         self.lvl = 1
         self.xp = 0
