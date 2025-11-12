@@ -132,9 +132,9 @@ class Player(Character):
         # TODO: Store the character_class (like "Warrior", "Mage", etc.)
         # TODO: Add any other player-specific attributes (level, experience, etc.)
         super().__init__(name, health, strength, magic)
-        self.char_class = character_class
-        self.lvl = 1
-        self.xp = 0
+        self.character_class = character_class
+        self.level = 1
+        self.experience = 0
         pass
         
     def display_stats(self):
@@ -145,9 +145,9 @@ class Player(Character):
         # TODO: Call the parent's display_stats method using super()
         # TODO: Then print additional player info like class and level
         super().display_stats()
-        print(f"Character Class: {self.char_class}")
-        print(f"Level: {self.lvl}")
-        print(f"Experience: {self.xp}")
+        print(f"Character Class: {self.character_class}")
+        print(f"Level: {self.level}")
+        print(f"Experience: {self.experience}")
         pass
 
 class Warrior(Player):
@@ -163,7 +163,7 @@ class Warrior(Player):
         """
         # TODO: Call super().__init__() with warrior-appropriate stats
         # Suggested stats: health=120, strength=15, magic=5
-        character_class = "warrior"
+        character_class = "Warrior"
         base_health = 120
         base_strength = 15
         base_magic = 5
@@ -207,7 +207,7 @@ class Mage(Player):
         """
         # TODO: Call super().__init__() with mage-appropriate stats
         # Suggested stats: health=80, strength=8, magic=20
-        character_class = "mage"
+        character_class = "Mage"
         base_health = 80
         base_strength = 8
         base_magic = 20
@@ -251,7 +251,7 @@ class Rogue(Player):
         """
         # TODO: Call super().__init__() with rogue-appropriate stats
         # Suggested stats: health=90, strength=12, magic=10
-        character_class = "rogue"
+        character_class = "Rogue"
         base_health = 90
         base_strength = 12
         base_magic = 10
