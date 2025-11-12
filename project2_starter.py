@@ -65,9 +65,9 @@ class Character:
         # TODO: Set the character's name, health, strength, and magic
         # These should be stored as instance variables
         self.name = name
-        self.hp = health
-        self.str = strength
-        self.mag = magic
+        self.health = health
+        self.strength = strength
+        self.magic = magic
         pass
         
     def attack(self, target):
@@ -81,7 +81,7 @@ class Character:
         # TODO: Implement basic attack
         # Damage should be based on self.strength
         # Use target.take_damage(damage) to apply damage
-        attack = self.str * 2
+        attack = self.strength * 2
         damage = target.take_damage(attack)
         print(f"{target.name} took {damage} damage!")
         pass
@@ -94,13 +94,13 @@ class Character:
         # TODO: Implement taking damage
         # Reduce self.health by damage amount
         # Make sure health doesn't go below 0
-        if damage < self.hp:
-            self.hp -= damage
-            print(f"{self.name} took {damage} damage! Health has dropped to {self.hp}.")
+        if damage < self.health:
+            self.health -= damage
+            print(f"{self.name} took {damage} damage! Health has dropped to {self.health}.")
             return damage
-        elif damage >= self.hp:
-            damage_taken = self.hp
-            self.hp = 0
+        elif damage >= self.health:
+            damage_taken = self.health
+            self.health = 0
             print(f"You have died!")
             return damage_taken
         pass
@@ -112,9 +112,9 @@ class Character:
         # TODO: Print character's name, health, strength, and magic
         # Make it look nice with formatting
         print(f"== {self.name} Stats ==")
-        print(f"Health: {self.hp}")
-        print(f"Strength: {self.str}")
-        print(f"Magic: {self.mag}")
+        print(f"Health: {self.health}")
+        print(f"Strength: {self.strength}")
+        print(f"Magic: {self.magic}")
         pass
 
 class Player(Character):
@@ -178,7 +178,7 @@ class Warrior(Player):
         # TODO: Implement warrior attack
         # Should do more damage than basic attack
         # Maybe strength + 5 bonus damage?
-        attack = self.str * 2 + 5
+        attack = self.strength * 2 + 5
         damage = target.take_damage(attack)
         print(f"{target.name} took {damage} damage!")
         pass
@@ -189,7 +189,7 @@ class Warrior(Player):
         """
         # TODO: Implement power strike
         # Should do significantly more damage than regular attack
-        attack = self.str * 4
+        attack = self.strength * 4
         damage = target.take_damage(attack)
         print(f"{target.name} took {damage} damage!")
         pass
@@ -221,7 +221,7 @@ class Mage(Player):
         """
         # TODO: Implement mage attack
         # Should use self.magic for damage calculation instead of strength
-        attack = self.mag * 2
+        attack = self.magic * 2
         damage = target.take_damage(attack)
         print(f"{target.name} took {damage} damage!")
         pass
@@ -232,7 +232,7 @@ class Mage(Player):
         """
         # TODO: Implement fireball spell
         # Should do magic-based damage with bonus
-        attack = self.mag * 4 + 5
+        attack = self.magic * 4 + 5
         damage = target.take_damage(attack)
         print(f"{target.name} took {damage} damage!")
         
@@ -267,7 +267,7 @@ class Rogue(Player):
         # Could add a chance for critical hit (double damage)
         # Hint: use random.randint(1, 10) and if result <= 3, it's a crit
         roll_result = random.randint(1, 10)
-        attack = self.str * 2
+        attack = self.strength * 2
         critical = attack + attack
         if roll_result == 2 or roll_result == 8:
             damage = target.take_damage(critical)
@@ -283,7 +283,7 @@ class Rogue(Player):
         """
         # TODO: Implement sneak attack
         # Should always do critical damage
-        attack = self.str * 2
+        attack = self.strength * 2
         critical = attack + attack
         damage = target.take_damage(critical)
         print(f"{target.name} took {damage} damage!")
