@@ -82,8 +82,8 @@ class Character:
         # Damage should be based on self.strength
         # Use target.take_damage(damage) to apply damage
         attack = self.strength * 2
-        damage = target.take_damage(attack)
-        print(f"{target.name} took {damage} damage!")
+        target.take_damage(attack)
+        print("")
         pass
         
     def take_damage(self, damage):
@@ -95,15 +95,15 @@ class Character:
         # Reduce self.health by damage amount
         # Make sure health doesn't go below 0
         if damage < self.health:
-            self.health -= damage
-            print(f"{self.name} took {damage} damage! Health has dropped to {self.health}.")
-            return damage
+            damage_taken = damage
+            self.health -= damage_taken
+            print(f"{self.name} took {damage_taken} damage! Health has dropped to {self.health}.")
         elif damage >= self.health:
             damage_taken = self.health
             self.health = 0
-            print(f"You have died!")
-            return damage_taken
-        pass
+            print(f"{self.name} took {damage_taken} damage! Health has dropped to {self.health}.")
+            print(f"{self.name} has died!")
+        return damage_taken
         
     def display_stats(self):
         """
@@ -148,6 +148,7 @@ class Player(Character):
         print(f"Character Class: {self.character_class}")
         print(f"Level: {self.level}")
         print(f"Experience: {self.experience}")
+        print("")
         pass
 
 class Warrior(Player):
@@ -179,8 +180,9 @@ class Warrior(Player):
         # Should do more damage than basic attack
         # Maybe strength + 5 bonus damage?
         attack = self.strength * 2 + 5
-        damage = target.take_damage(attack)
-        print(f"{target.name} took {damage} damage!")
+        print(f"{self.name} lashes out.")
+        target.take_damage(attack)
+        print("")
         pass
         
     def power_strike(self, target):
@@ -190,8 +192,9 @@ class Warrior(Player):
         # TODO: Implement power strike
         # Should do significantly more damage than regular attack
         attack = self.strength * 3
-        damage = target.take_damage(attack)
-        print(f"{target.name} took {damage} damage!")
+        print(f"{self.name} launches a heavy blow!")
+        target.take_damage(attack)
+        print("")
         pass
 
 class Mage(Player):
@@ -222,9 +225,9 @@ class Mage(Player):
         # TODO: Implement mage attack
         # Should use self.magic for damage calculation instead of strength
         attack = self.magic * 2
-        damage = target.take_damage(attack)
-        print(f"{target.name} took {damage} damage!")
-        pass
+        print(f"{self.name} casts mana blast.")
+        target.take_damage(attack)
+        print("")
         
     def fireball(self, target):
         """
@@ -233,10 +236,9 @@ class Mage(Player):
         # TODO: Implement fireball spell
         # Should do magic-based damage with bonus
         attack = self.magic * 2 + (self.magic // 5)
-        damage = target.take_damage(attack)
-        print(f"{target.name} took {damage} damage!")
-        
-        pass
+        print(f"{self.name} casts fireball!")
+        target.take_damage(attack)
+        print("")
 
 class Rogue(Player):
     """
@@ -256,7 +258,6 @@ class Rogue(Player):
         base_strength = 12
         base_magic = 10
         super().__init__(name, character_class, base_health, base_strength, base_magic)
-        pass
         
     def attack(self, target):
         """
@@ -270,12 +271,13 @@ class Rogue(Player):
         attack = self.strength * 2
         critical = attack + attack
         if roll_result == 2 or roll_result == 8:
-            damage = target.take_damage(critical)
-            print(f"CRITICAL HIT! {self.name} stabs {target.name} for {damage} damage!")
+            print(f"*BLACK FLASH*- I mean...CRITICAL HIT!")
+            target.take_damage(critical)
+            print("")
         else:
-            damage = target.take_damage(attack)
-            print(f"{target.name} took {damage} damage!")
-        pass
+            print(f"{self.name} lashes out.")
+            target.take_damage(attack)
+            print("")
         
     def sneak_attack(self, target):
         """
@@ -285,9 +287,9 @@ class Rogue(Player):
         # Should always do critical damage
         attack = self.strength * 2
         critical = attack + attack
-        damage = target.take_damage(critical)
-        print(f"{target.name} took {damage} damage!")
-        pass
+        print(f"{self.name} blindsided the opponent!")
+        target.take_damage(critical)
+        print("")
 
 class Weapon:
     """
