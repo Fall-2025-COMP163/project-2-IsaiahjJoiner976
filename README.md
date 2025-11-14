@@ -145,3 +145,16 @@ Feel free to add your own creative touches for bonus points:
 - Additional character classes beyond the three required
 - More weapon types with different properties
 - Enhanced special abilities with unique effects
+
+## AI Usage
+- No AI was used besides the understanding of certain errors I was running into.
+
+## How to Run
+- Remove the hashtags, "#", from the code under the main block. Copy the code into an IDE and run it.
+- It should automatically run and display the following:
+   * Stats of all three classes
+   * The basic attacks for each class
+   * The testing of the special ability of each class
+   * Displays the the weapons and their bonus damage
+   * Followed by a mock battle between the warrior and mage class
+   * Displays one round of exchanging attacks, battle results, and the declaration of the character with the most health being the winner.
